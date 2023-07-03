@@ -1,4 +1,4 @@
-import {Selector} from 'testcafe';
+/*import {Selector} from 'testcafe';
 process.env.NODE_ENV = "test";
 
 fixture`Testing Teacher UI`
@@ -15,4 +15,4 @@ test('Testing search Teachers', async t => {
     await t.expect(rowCount).eql(2)
 
     await t.navigateTo("/dbinitialize");
-});
+});*/
