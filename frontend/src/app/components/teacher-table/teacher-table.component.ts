@@ -7,7 +7,6 @@ import { AppServiceService } from '../../app-service.service';
     templateUrl: './teacher-table.component.html',
     styleUrls: ['./teacher-table.component.css']
 })
-
 export class TeacherTableComponent implements OnInit {
 
     faTrash = faTrash;
@@ -35,6 +34,14 @@ export class TeacherTableComponent implements OnInit {
         this.router.navigate(['editTeacher'], navigationExtras)
     }
 
+    initializeDB(){
+        this.service.initializeDB().subscribe((response) => {
+            console.log('DB is Initialized')
+        }, (error) => {
+            console.log('ERROR - ', error)
+        })
+    }
+
     getTeacherData() {
         this.selected = 'Teachers';
         this.service.getTeacherData().subscribe((response) => {
@@ -54,15 +61,17 @@ export class TeacherTableComponent implements OnInit {
     }
 
     search(value) {
-      let foundItems = [];
-      if (value.length <= 0) {
-        this.getTeacherData();
-      } else {
-        foundItems = this.teacherData.filter((teacher) => {
-          return teacher[0].name.toLowerCase().includes(value.toLowerCase());
-        });
-      }
-      this.teacherData = foundItems;
+        let foundItems = [];
+        if (value.length <= 0) {
+            this.getTeacherData();
+        } else {
+            let b = this.teacherData.filter((teacher) => {
+                if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
+                    foundItems.push(teacher)
+                }
+            });
+            this.teacherData = foundItems;
+        }
     }
 
     deleteTeacher(itemid) {

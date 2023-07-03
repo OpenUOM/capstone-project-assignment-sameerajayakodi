@@ -9,23 +9,26 @@ import { AppServiceService } from 'src/app/app-service.service';
 })
 export class AddNewStudentComponent implements OnInit {
 
-  constructor(private service: AppServiceService, private router: Router) { }
+  constructor(private service : AppServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  createStudent(value) {
-    const student = {
-      id: value.id,
-      name: value.name,
-      age: value.age,
-      hometown: value.Hometown
-    };
+  createStudent(value){
 
-    this.service.addStudent(student).subscribe((response) => {
-      this.router.navigate(['student']);
-    }, (error) => {
-      console.log('ERROR - ', error);
-    });
+    const student = {
+      id : value.id,
+      name : value.name,
+      age : value.age,
+      hometown : value.Hometown
+    }
+
+
+    this.service.addStudent(student).subscribe((response)=>{
+      this.router.navigate(['student'])
+    },(error)=>{
+      console.log('ERROR - ', error)
+    })
   }
+
 }
