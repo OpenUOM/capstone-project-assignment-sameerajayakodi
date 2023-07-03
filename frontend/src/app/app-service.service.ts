@@ -12,7 +12,7 @@ export class AppServiceService {
   constructor(private http: HttpClient) {
    
     
-      this.ROOT_URL = 'http://localhost:8080 '
+      this.ROOT_URL = 'http://localhost:8080';
    
   }
 
