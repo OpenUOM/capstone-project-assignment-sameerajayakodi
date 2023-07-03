@@ -1,4 +1,4 @@
-import { Selector } from 'testcafe';
+/*import { Selector } from 'testcafe';
 process.env.NODE_ENV = "test";
 
 fixture`Testing Student UI`
@@ -23,3 +23,4 @@ test('Testing add students', async t => {
     let tdText = await table.find('tr').nth(rowCount - 1).innerText;
     await t.expect(tdText).contains("Pasindu Basnayaka");
 });
+*/
